@@ -1,23 +1,39 @@
-import { recipes } from "./data/recipes";
-import { RecipeGrid } from "./components/RecipeGrid";
+import type { Metadata } from "next";
+import Link from "next/link";
+import "./globals.css";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "NextBites — Quick Recipes by Cuisine & Prep Time",
+  description:
+    "Browse quick meals by cuisine and prep time, search recipes live, and view ingredients and step-by-step instructions.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div className="flex w-full flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <div className="flex flex-col gap-2">
-            <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-              Recipes
-            </h1>
-            <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Browse quick meals by cuisine and prep time.
-            </p>
+    <html lang="en">
+      <body className="flex min-h-screen flex-col bg-zinc-50 font-sans text-zinc-900 antialiased dark:bg-black dark:text-zinc-50">
+        <header className="w-full border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-4 sm:px-16">
+            <Link
+              href="/"
+              className="text-lg font-bold tracking-tight text-black dark:text-zinc-50"
+            >
+              NextBites
+            </Link>
+            <Link
+              href="/"
+              className="text-sm font-medium text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+            >
+              Home
+            </Link>
           </div>
-
-          <RecipeGrid recipes={recipes} />
-        </div>
-      </main>
-    </div>
+        </header>
+        {children}
+      </body>
+    </html>
   );
 }
