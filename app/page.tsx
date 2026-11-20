@@ -1,39 +1,19 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import "./globals.css";
+import { RecipeGrid } from "./components/RecipeGrid";
+import { recipes } from "./data/recipes";
 
-export const metadata: Metadata = {
-  title: "NextBites — Quick Recipes by Cuisine & Prep Time",
-  description:
-    "Browse quick meals by cuisine and prep time, search recipes live, and view ingredients and step-by-step instructions.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function HomePage() {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col bg-zinc-50 font-sans text-zinc-900 antialiased dark:bg-black dark:text-zinc-50">
-        <header className="w-full border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-          <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-4 sm:px-16">
-            <Link
-              href="/"
-              className="text-lg font-bold tracking-tight text-black dark:text-zinc-50"
-            >
-              NextBites
-            </Link>
-            <Link
-              href="/"
-              className="text-sm font-medium text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
-            >
-              Home
-            </Link>
-          </div>
-        </header>
-        {children}
-      </body>
-    </html>
+    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+          NextBites
+        </h1>
+        <p className="mt-2 text-base text-zinc-600">
+          Quick, flavorful recipes built with static site generation.
+        </p>
+      </header>
+
+      <RecipeGrid recipes={recipes} />
+    </main>
   );
 }
