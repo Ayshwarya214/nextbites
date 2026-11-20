@@ -1,5 +1,5 @@
 import { recipes } from "./data/recipes";
-import { RecipeCard } from "./components/RecipeCard";
+import { RecipeGrid } from "./components/RecipeGrid";
 
 export default function Home() {
   return (
@@ -15,18 +15,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div
-            className="w-full"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            {recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
-            ))}
-          </div>
+          <RecipeGrid recipes={recipes} />
         </div>
       </main>
     </div>
