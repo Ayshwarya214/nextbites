@@ -1,3 +1,4 @@
+// Recipe detail page with notFound() handling
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRecipe, recipes } from "../../data/recipes";

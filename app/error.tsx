@@ -1,5 +1,5 @@
 "use client";
-
+// Client error boundary with Try again reset
 import { useEffect } from "react";
 
 export default function Error({
